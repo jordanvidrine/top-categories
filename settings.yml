@@ -1,0 +1,7 @@
+sort_popular_categories:
+  default: true
+  description: 'Your "Upper Area" categories will be sorted by popularity/activity.'
+top_category_count:
+  type: integer
+  default: 7
+  description: 'How many categories do you want displayed in the "Upper Area"?'

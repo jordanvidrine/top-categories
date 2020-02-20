@@ -1,6 +1,6 @@
 {
   "name": "Top-Categories",
-  "component": true,
+  "component": false,
   "license_url": "https://github.com/jordanvidrine/top-categories/blob/master/LICENSE",
   "about_url": "",
   "authors": "Jordan Vidrine",
