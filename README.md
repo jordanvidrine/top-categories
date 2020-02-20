@@ -1,0 +1,1 @@
+A Discourse Theme Component that allows the ability to display the top 7 categories as blocks on the category page
