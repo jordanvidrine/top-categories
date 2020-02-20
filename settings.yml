@@ -4,4 +4,5 @@ sort_popular_categories:
 top_category_count:
   type: integer
   default: 7
+  min: 1
   description: 'How many categories do you want displayed in the "Upper Area"?'
