@@ -4,10 +4,7 @@
   </h1>
   <div class="top-categories-wrapper">
     {{#each this.topCat as |c|}}
-      <div
-        class="top-category {{c.name}}"
-        style="box-shadow: 4px 4px 0 #{{c.color}}"
-      >
+      {{#top-category-wrapper category=c}}
         <div class="top-category-column-one">
           {{category-title-link category=c}}
           <div class="category-description">
@@ -90,7 +87,7 @@
           </span>
           {{category-unread category=c tagName="div" class="unread-new"}}
         </div>
-      </div>
+      {{/top-category-wrapper}}
     {{/each}}
   </div>
 {{else if this.other}}

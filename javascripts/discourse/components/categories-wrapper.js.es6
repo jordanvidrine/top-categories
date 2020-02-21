@@ -1,45 +1,42 @@
 import Component from "@ember/component";
-import EmberObject from "@ember/object";
+import { setting } from "discourse/lib/computed";
 
 export default Component.extend({
   tagName: "",
 
+  categories: null,
+  topCat: null,
+  other: null,
+  topIsSelected: null,
+
   init() {
     this._super(...arguments);
 
-    // sort categories by top 7
-    if (settings.sort_popular_categories) {
-      let categories = this.attrs.categories.value.content;
-      categories = categories.sort((a, b) => b.post_count - a.post_count);
+    const categories = this.attrs.categories.value.content || [];
+    if (this.sortPopularCategories) {
+      // sort categories by top 7
+      this.set("categories", categories.sortBy("post_count"));
+    } else {
+      this.set("categories", categories);
     }
 
     this.setProperties({
       topCat: this.topCat(),
       other: this.cat(),
-      topIsSelected: this.topIsSelected()
+      topIsSelected: this.sortPopularCategories
     });
   },
 
-  topIsSelected() {
-    if (settings.sort_popular_categories) {
-      return true;
-    } else {
-      return false;
-    }
-  },
+  sortPopularCategories: setting("sort_popular_categories"),
+
+  topCategoryCount: setting("top_category_count"),
 
   topCat() {
-    let catCount = settings.top_category_count;
-    let { categories } = this.attrs;
-    categories = categories.value.content;
-    return categories.slice(0, catCount);
+    return this.categories.slice(0, this.topCategoryCount);
   },
 
   cat() {
-    let catCount = settings.top_category_count;
-    let { categories } = this.attrs;
-    categories = categories.value.content;
-    if (categories.slice(catCount).length === 0) return false;
-    return categories.slice(catCount);
+    if (this.categories.slice(this.topCategoryCount).length === 0) return false;
+    return this.categories.slice(this.topCategoryCount);
   }
 });
