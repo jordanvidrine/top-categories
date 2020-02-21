@@ -1,9 +1,9 @@
-{{#if this.top}}
+{{#if top}}
   <h1 class="top-categories-header">
-    {{if this.topIsSelected " - Most Popular - "}}
+    {{if topIsSelected " - Most Popular - "}}
   </h1>
   <div class="top-categories-wrapper">
-    {{#each this.topCat as |c|}}
+    {{#each topCat as |c|}}
       {{#top-category-wrapper category=c}}
         <div class="top-category-column-one">
           {{category-title-link category=c}}
@@ -90,7 +90,7 @@
       {{/top-category-wrapper}}
     {{/each}}
   </div>
-{{else if this.other}}
+{{else if other}}
   <h1 class="other-categories-header">
     - Other Categories -
   </h1>
@@ -117,7 +117,7 @@
       </tr>
     </thead>
     <tbody aria-labelledby="categories-only-category">
-      {{#each this.other as |c|}}
+      {{#each other as |c|}}
         <tr
           data-category-id={{c.id}}
           data-notification-level={{c.notificationLevelString}}

@@ -1,5 +1,5 @@
 import Component from "@ember/component";
-import { setting } from "discourse/lib/computed";
+import { computed } from "@ember/object";
 
 export default Component.extend({
   tagName: "",
@@ -27,9 +27,13 @@ export default Component.extend({
     });
   },
 
-  sortPopularCategories: setting("sort_popular_categories"),
+  sortPopularCategories: computed(function() {
+    return settings.sort_popular_categories;
+  }),
 
-  topCategoryCount: setting("top_category_count"),
+  topCategoryCount: computed(function() {
+    return settings.top_category_count;
+  }),
 
   topCat() {
     return this.categories.slice(0, this.topCategoryCount);
