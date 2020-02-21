@@ -1,6 +1,6 @@
 {{#if top}}
   <h1 class="top-categories-header">
-    {{if topIsSelected " - Most Popular - "}}
+    {{if topIsSelected (concat "- " (theme-i18n "most_popular") " -")}}
   </h1>
   <div class="top-categories-wrapper">
     {{#each topCat as |c|}}
