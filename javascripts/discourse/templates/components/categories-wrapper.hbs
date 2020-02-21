@@ -4,12 +4,14 @@
   </h1>
   <div class="top-categories-wrapper">
     {{#each topCat as |c|}}
-      {{#top-category-wrapper category=c}}
+      {{#top-category-wrapper category=c as |categoryDescription|}}
         <div class="top-category-column-one">
           {{category-title-link category=c}}
-          <div class="category-description">
-            {{{dir-span c.description_excerpt}}}
-          </div>
+          {{#if categoryDescription}}
+            <div class="category-description">
+              {{dir-span categoryDescription}}
+            </div>
+          {{/if}}
           {{#if c.isGrandParent}}
             <table class="category-list subcategories-with-subcategories">
               <tbody>
