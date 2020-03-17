@@ -14,7 +14,6 @@ export default Component.extend({
 
     const categories = this.attrs.categories.value.content || [];
     if (this.sortPopularCategories) {
-      // sort categories by top 7
       this.set("categories", categories.sortBy("post_count"));
     } else {
       this.set("categories", categories);
